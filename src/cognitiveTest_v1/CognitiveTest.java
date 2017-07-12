@@ -1,9 +1,8 @@
-package cognitiveTest_v1;
-
 /* @author : Joel Oliveira Ribeiro
  * Student of Computer Engineering at the Federal University of Ceara from Brazil
  * Test of Cognition for general Activities and Monitoring
 */
+package cognitiveTest_v1;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
@@ -13,6 +12,7 @@ import java.awt.event.*;
 import java.util.Random;
 
 import javax.swing.*;
+
 
 public class CognitiveTest extends JFrame implements ActionListener {
 
@@ -50,8 +50,8 @@ public class CognitiveTest extends JFrame implements ActionListener {
 			nameFirstOption=randomNameLabel(numberRandom2);
 			nameSecondOption=randomNameLabel(numberRandom1);
 		}
-		firstOption = new JButton(nameFirstOption); // faltando implementar o ActionListener
-		secondOption = new JButton(nameSecondOption);// faltando implementar o ActionListener
+		firstOption = new JButton(nameFirstOption); firstOption.addActionListener(this);
+		secondOption = new JButton(nameSecondOption);secondOption.addActionListener(this);
 		optionsPanel.add(firstOption); optionsPanel.add(secondOption);
 		
 		hitsPanel=new JPanel();
@@ -129,6 +129,8 @@ public class CognitiveTest extends JFrame implements ActionListener {
 	@Override // Funcao para definir os eventos em cima dos obtoes de opcoes 
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		
+		
 		
 	}
 	

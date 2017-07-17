@@ -1,6 +1,7 @@
 package cognitiveTest_v1;
 
 import java.awt.FlowLayout;
+import java.awt.GridLayout;
 
 import javax.swing.*;
 
@@ -15,9 +16,8 @@ public class Home_CognitiveTest extends JFrame {
     
     private JMenu menuAbout;
     
-    
-	private JPanel jmenuPanel,generalPanel;
-    private ImageHomePanel imgHome;
+   
+    private ImageHomePanel imgHomePanel;
 
     
     public Home_CognitiveTest() {
@@ -28,10 +28,6 @@ public class Home_CognitiveTest extends JFrame {
     private void initComponents(){
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-    	
-        jmenuPanel = new JPanel(); 
-        jmenuPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
-    	
         jMenuBar1 = new JMenuBar();
         
         menuCognitiveTest = new JMenu();
@@ -58,23 +54,17 @@ public class Home_CognitiveTest extends JFrame {
 
         setJMenuBar(jMenuBar1);
         
-        //jmenuPanel.add(jMenuBar1);
-        
-        //imgHome = new ImageHomePanel();
+        imgHomePanel = new ImageHomePanel();
+        imgHomePanel.setLayout(new GridLayout(1,1,50,50));
+      
+       
+        this.getContentPane().add(imgHomePanel);
         
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 378, Short.MAX_VALUE)
-        );
+        setResizable(false);
 
         pack();
+        this.setSize(637, 320);
 
 	
     }

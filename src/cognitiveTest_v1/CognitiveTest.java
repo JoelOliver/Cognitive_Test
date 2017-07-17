@@ -48,15 +48,10 @@ public class CognitiveTest extends JFrame implements KeyListener {
 		String nameFirstOption=" "; String nameSecondOption=" ";
 		if(randomIntGenerate2() == 0){
 			nameFirstOption=randomNameLabel(numberRandom1);
-			do{
-				numberRandom2 = randomIntGenerate6();
-			}while(numberRandom1 == numberRandom2);
 			nameSecondOption=randomNameLabel(numberRandom2);
 		}
 		else{
-			do{
-				numberRandom2 = randomIntGenerate6();
-			}while(numberRandom1 == numberRandom2);
+		
 			nameFirstOption=randomNameLabel(numberRandom2);
 			nameSecondOption=randomNameLabel(numberRandom1);
 		}
@@ -176,16 +171,12 @@ public class CognitiveTest extends JFrame implements KeyListener {
 			
 			String nameFirstOption=" "; String nameSecondOption=" ";
 			if(randomIntGenerate2() == 0){
-				do{
-					numberRandom2 = randomIntGenerate6();
-				}while(numberRandom1 == numberRandom2);
+			
 				nameFirstOption=randomNameLabel(numberRandom1);
 				nameSecondOption=randomNameLabel(numberRandom2);
 			}
 			else{
-				do{
-					numberRandom2 = randomIntGenerate6();
-				}while(numberRandom1 == numberRandom2);
+				
 				nameFirstOption=randomNameLabel(numberRandom2);
 				nameSecondOption=randomNameLabel(numberRandom1);
 			}
@@ -208,16 +199,12 @@ public class CognitiveTest extends JFrame implements KeyListener {
 			
 			String nameFirstOption=" "; String nameSecondOption=" ";
 			if(randomIntGenerate2() == 0){
-				do{
-					numberRandom2 = randomIntGenerate6();
-				}while(numberRandom1 == numberRandom2);
+				
 				nameFirstOption=randomNameLabel(numberRandom1);
 				nameSecondOption=randomNameLabel(numberRandom2);
 			}
 			else{
-				do{
-					numberRandom2 = randomIntGenerate6();
-				}while(numberRandom1 == numberRandom2);
+				
 				nameFirstOption=randomNameLabel(numberRandom2);
 				nameSecondOption=randomNameLabel(numberRandom1);
 			}
@@ -245,16 +232,12 @@ public class CognitiveTest extends JFrame implements KeyListener {
 			
 			String nameFirstOption=" "; String nameSecondOption=" ";
 			if(randomIntGenerate2() == 0){
-				do{
-					numberRandom2 = randomIntGenerate6();
-				}while(numberRandom1 == numberRandom2);
+				
 				nameFirstOption=randomNameLabel(numberRandom1);
 				nameSecondOption=randomNameLabel(numberRandom2);
 			}
 			else{
-				do{
-					numberRandom2 = randomIntGenerate6();
-				}while(numberRandom1 == numberRandom2);
+				
 				nameFirstOption=randomNameLabel(numberRandom2);
 				nameSecondOption=randomNameLabel(numberRandom1);
 			}
@@ -278,16 +261,12 @@ public class CognitiveTest extends JFrame implements KeyListener {
 			
 			String nameFirstOption=" "; String nameSecondOption=" ";
 			if(randomIntGenerate2() == 0){
-				do{
-					numberRandom2 = randomIntGenerate6();
-				}while(numberRandom1 == numberRandom2);
+				
 				nameFirstOption=randomNameLabel(numberRandom1);
 				nameSecondOption=randomNameLabel(numberRandom2);
 			}
 			else{
-				do{
-					numberRandom2 = randomIntGenerate6();
-				}while(numberRandom1 == numberRandom2);
+				
 				nameFirstOption=randomNameLabel(numberRandom2);
 				nameSecondOption=randomNameLabel(numberRandom1);
 			}
@@ -325,16 +304,12 @@ public class CognitiveTest extends JFrame implements KeyListener {
 				
 				String nameFirstOption=" "; String nameSecondOption=" ";
 				if(randomIntGenerate2() == 0){
-					do{
-						numberRandom2 = randomIntGenerate6();
-					}while(numberRandom1 == numberRandom2);
+					
 					nameFirstOption=randomNameLabel(numberRandom1);
 					nameSecondOption=randomNameLabel(numberRandom2);
 				}
 				else{
-					do{
-						numberRandom2 = randomIntGenerate6();
-					}while(numberRandom1 == numberRandom2);
+					
 					nameFirstOption=randomNameLabel(numberRandom2);
 					nameSecondOption=randomNameLabel(numberRandom1);
 				}
@@ -357,16 +332,12 @@ public class CognitiveTest extends JFrame implements KeyListener {
 				
 				String nameFirstOption=" "; String nameSecondOption=" ";
 				if(randomIntGenerate2() == 0){
-					do{
-						numberRandom2 = randomIntGenerate6();
-					}while(numberRandom1 == numberRandom2);
+					
 					nameFirstOption=randomNameLabel(numberRandom1);
 					nameSecondOption=randomNameLabel(numberRandom2);
 				}
 				else{
-					do{
-						numberRandom2 = randomIntGenerate6();
-					}while(numberRandom1 == numberRandom2);
+					
 					nameFirstOption=randomNameLabel(numberRandom2);
 					nameSecondOption=randomNameLabel(numberRandom1);
 				}
@@ -394,16 +365,12 @@ public class CognitiveTest extends JFrame implements KeyListener {
 				
 				String nameFirstOption=" "; String nameSecondOption=" ";
 				if(randomIntGenerate2() == 0){
-					do{
-						numberRandom2 = randomIntGenerate6();
-					}while(numberRandom1 == numberRandom2);
+					
 					nameFirstOption=randomNameLabel(numberRandom1);
 					nameSecondOption=randomNameLabel(numberRandom2);
 				}
 				else{
-					do{
-						numberRandom2 = randomIntGenerate6();
-					}while(numberRandom1 == numberRandom2);
+					
 					nameFirstOption=randomNameLabel(numberRandom2);
 					nameSecondOption=randomNameLabel(numberRandom1);
 				}
@@ -427,16 +394,12 @@ public class CognitiveTest extends JFrame implements KeyListener {
 				
 				String nameFirstOption=" "; String nameSecondOption=" ";
 				if(randomIntGenerate2() == 0){
-					do{
-						numberRandom2 = randomIntGenerate6();
-					}while(numberRandom1 == numberRandom2);
+					
 					nameFirstOption=randomNameLabel(numberRandom1);
 					nameSecondOption=randomNameLabel(numberRandom2);
 				}
 				else{
-					do{
-						numberRandom2 = randomIntGenerate6();
-					}while(numberRandom1 == numberRandom2);
+					
 					nameFirstOption=randomNameLabel(numberRandom2);
 					nameSecondOption=randomNameLabel(numberRandom1);
 				}

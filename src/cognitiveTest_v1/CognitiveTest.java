@@ -126,7 +126,7 @@ public class CognitiveTest extends JFrame implements ActionListener {
 	return color;}
 	
 	
-	@Override // Funcao para definir os eventos em cima dos obtoes de opcoes 
+	@Override // Funcao para definir os eventos em cima dos botoes de opcoes 
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		

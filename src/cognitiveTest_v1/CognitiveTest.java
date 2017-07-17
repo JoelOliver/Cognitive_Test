@@ -93,10 +93,10 @@ public class CognitiveTest extends JFrame implements KeyListener {
 		
 	}
 	
-	// Funcao que gera um numero aleatorio entre 0 e 5
+	// Funcao que gera um numero aleatorio entre 0 e 7
 	public int randomIntGenerate6(){
 		Random r = new Random();
-		int numberRandom = r.nextInt(6); 
+		int numberRandom = r.nextInt(8); 
 	return numberRandom;}
 	
 	// Funcao que gera um numero aleatorio 0 ou 1

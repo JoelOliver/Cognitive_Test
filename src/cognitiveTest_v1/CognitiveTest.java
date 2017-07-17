@@ -91,9 +91,10 @@ public class CognitiveTest extends JFrame implements KeyListener {
 		this.getContentPane().add(generalPanel);
 		
 		setVisible(true);
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         pack();
         setResizable(false);
+        this.setSize(450, 450);
 		
 	}
 	
@@ -192,7 +193,7 @@ public class CognitiveTest extends JFrame implements KeyListener {
 			this.firstOption.setText(nameFirstOption);
 			this.secondOption.setText(nameSecondOption);
 			
-	        pack();
+	       // pack();
 
 		}
 		else{
@@ -224,7 +225,7 @@ public class CognitiveTest extends JFrame implements KeyListener {
 			this.firstOption.setText(nameFirstOption);
 			this.secondOption.setText(nameSecondOption);
 			
-	        pack();
+	       // pack();
 
 		}
 	}
@@ -261,7 +262,7 @@ public class CognitiveTest extends JFrame implements KeyListener {
 			this.firstOption.setText(nameFirstOption);
 			this.secondOption.setText(nameSecondOption);
 			
-	        pack();
+	      //  pack();
 
 			
 		}
@@ -294,7 +295,7 @@ public class CognitiveTest extends JFrame implements KeyListener {
 			this.firstOption.setText(nameFirstOption);
 			this.secondOption.setText(nameSecondOption);
 			
-	        pack();
+	     //   pack();
 
 		}
 		
@@ -341,7 +342,7 @@ public class CognitiveTest extends JFrame implements KeyListener {
 				this.firstOption.setText(nameFirstOption);
 				this.secondOption.setText(nameSecondOption);
 				
-		        pack();
+		     //   pack();
 
 			}
 			else{
@@ -373,7 +374,7 @@ public class CognitiveTest extends JFrame implements KeyListener {
 				this.firstOption.setText(nameFirstOption);
 				this.secondOption.setText(nameSecondOption);
 				
-		        pack();
+		   //     pack();
 
 			}
 	        
@@ -410,7 +411,7 @@ public class CognitiveTest extends JFrame implements KeyListener {
 				this.firstOption.setText(nameFirstOption);
 				this.secondOption.setText(nameSecondOption);
 				
-		        pack();
+		      //  pack();
 
 				
 			}
@@ -443,7 +444,7 @@ public class CognitiveTest extends JFrame implements KeyListener {
 				this.firstOption.setText(nameFirstOption);
 				this.secondOption.setText(nameSecondOption);
 				
-		        pack();
+		       // pack();
 
 			}
 	        
@@ -456,12 +457,6 @@ public class CognitiveTest extends JFrame implements KeyListener {
 	}
 	
 	 
-	
-	
-	// TESTING!
-	   public static void main(String arg[]){
-		   CognitiveTest test=new CognitiveTest();
-	   }
 
 	
 

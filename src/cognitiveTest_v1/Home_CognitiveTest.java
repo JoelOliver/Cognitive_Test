@@ -1,5 +1,7 @@
 package cognitiveTest_v1;
 
+import java.awt.FlowLayout;
+
 import javax.swing.*;
 
 public class Home_CognitiveTest extends JFrame {
@@ -12,6 +14,10 @@ public class Home_CognitiveTest extends JFrame {
     private JMenuItem menuItemInitTest;
     
     private JMenu menuAbout;
+    
+    
+	private JPanel jmenuPanel,generalPanel;
+    private ImageHomePanel imgHome;
 
     
     public Home_CognitiveTest() {
@@ -23,8 +29,8 @@ public class Home_CognitiveTest extends JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
     	
-    	//guiCognitiveTest.setVisible(false);
-
+        jmenuPanel = new JPanel(); 
+        jmenuPanel.setLayout(new FlowLayout(FlowLayout.LEADING));
     	
         jMenuBar1 = new JMenuBar();
         
@@ -51,16 +57,21 @@ public class Home_CognitiveTest extends JFrame {
 
 
         setJMenuBar(jMenuBar1);
+        
+        //jmenuPanel.add(jMenuBar1);
+        
+        //imgHome = new ImageHomePanel();
+        
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 450, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 278, Short.MAX_VALUE)
+            .addGap(0, 378, Short.MAX_VALUE)
         );
 
         pack();
@@ -103,5 +114,7 @@ public class Home_CognitiveTest extends JFrame {
                 new Home_CognitiveTest().setVisible(true);
             }
         });
-    }
+      }
+    
+ 
 }

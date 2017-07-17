@@ -14,7 +14,7 @@ import java.util.Random;
 import javax.swing.*;
 
 
-public class CognitiveTest extends JFrame implements ActionListener,KeyListener {
+public class CognitiveTest extends JFrame implements KeyListener {
 
 	private JLabel testLabel,hitsLabel;
 	private JButton firstOption,secondOption;
@@ -60,16 +60,23 @@ public class CognitiveTest extends JFrame implements ActionListener,KeyListener 
 			nameFirstOption=randomNameLabel(numberRandom2);
 			nameSecondOption=randomNameLabel(numberRandom1);
 		}
-		firstOption = new JButton(nameFirstOption); firstOption.addActionListener(new java.awt.event.ActionListener() {
+		firstOption = new JButton(nameFirstOption); 
+		firstOption.setFocusPainted(false);
+		firstOption.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 firstOptionActionPerformed(evt);
             }
         });
-		secondOption = new JButton(nameSecondOption);secondOption.addActionListener(new java.awt.event.ActionListener() {
+		firstOption.addKeyListener(this);
+		
+		secondOption = new JButton(nameSecondOption);
+		secondOption.setFocusPainted(false);
+		secondOption.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 secondOptionActionPerformed(evt);
             }
         });
+		secondOption.addKeyListener(this);
 		optionsPanel.add(firstOption); optionsPanel.add(secondOption);
 		
 		hitsPanel=new JPanel();
@@ -150,14 +157,7 @@ public class CognitiveTest extends JFrame implements ActionListener,KeyListener 
 		 
 	return color;}
 	
-	// Funcao para definir os eventos em cima dos botoes de opcoes
-	@Override  
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-		
-		
-	}
+	// Funcoes para definir os eventos em cima dos botoes de opcoes
 	
 	private void firstOptionActionPerformed(java.awt.event.ActionEvent evt){
 		
@@ -309,9 +309,146 @@ public class CognitiveTest extends JFrame implements ActionListener,KeyListener 
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
-		
-	}
+		if(e.getKeyCode()==KeyEvent.VK_LEFT){
+			if(firstOption.getText() == testLabel.getText()){
+				hits+=1;
+				this.hitsLabel.setText("Acertos : "+hits);
+				do{
+			    	numberRandom1 = randomIntGenerate6();
+			    	numberRandom2 = randomIntGenerate6();
+			    	
+			    }while(numberRandom1 == numberRandom2);
+				
+				this.testLabel.setText(this.randomNameLabel(numberRandom1));
+				this.testLabel.setForeground(this.randomColorLabel(numberRandom2));
+				
+				String nameFirstOption=" "; String nameSecondOption=" ";
+				if(randomIntGenerate2() == 0){
+					do{
+						numberRandom2 = randomIntGenerate6();
+					}while(numberRandom1 == numberRandom2);
+					nameFirstOption=randomNameLabel(numberRandom1);
+					nameSecondOption=randomNameLabel(numberRandom2);
+				}
+				else{
+					do{
+						numberRandom2 = randomIntGenerate6();
+					}while(numberRandom1 == numberRandom2);
+					nameFirstOption=randomNameLabel(numberRandom2);
+					nameSecondOption=randomNameLabel(numberRandom1);
+				}
+				
+				this.firstOption.setText(nameFirstOption);
+				this.secondOption.setText(nameSecondOption);
+				
+		        pack();
 
+			}
+			else{
+				do{
+			    	numberRandom1 = randomIntGenerate6();
+			    	numberRandom2 = randomIntGenerate6();
+			    	
+			    }while(numberRandom1 == numberRandom2);
+				
+				this.testLabel.setText(this.randomNameLabel(numberRandom1));
+				this.testLabel.setForeground(this.randomColorLabel(numberRandom2));
+				
+				String nameFirstOption=" "; String nameSecondOption=" ";
+				if(randomIntGenerate2() == 0){
+					do{
+						numberRandom2 = randomIntGenerate6();
+					}while(numberRandom1 == numberRandom2);
+					nameFirstOption=randomNameLabel(numberRandom1);
+					nameSecondOption=randomNameLabel(numberRandom2);
+				}
+				else{
+					do{
+						numberRandom2 = randomIntGenerate6();
+					}while(numberRandom1 == numberRandom2);
+					nameFirstOption=randomNameLabel(numberRandom2);
+					nameSecondOption=randomNameLabel(numberRandom1);
+				}
+				
+				this.firstOption.setText(nameFirstOption);
+				this.secondOption.setText(nameSecondOption);
+				
+		        pack();
+
+			}
+	        
+
+	    }else if(e.getKeyCode()==KeyEvent.VK_RIGHT){
+	    	if(secondOption.getText() == testLabel.getText()){
+				hits+=1;
+				this.hitsLabel.setText("Acertos : "+hits);
+				do{
+			    	numberRandom1 = randomIntGenerate6();
+			    	numberRandom2 = randomIntGenerate6();
+			    	
+			    }while(numberRandom1 == numberRandom2);
+				
+				this.testLabel.setText(this.randomNameLabel(numberRandom1));
+				this.testLabel.setForeground(this.randomColorLabel(numberRandom2));
+				
+				String nameFirstOption=" "; String nameSecondOption=" ";
+				if(randomIntGenerate2() == 0){
+					do{
+						numberRandom2 = randomIntGenerate6();
+					}while(numberRandom1 == numberRandom2);
+					nameFirstOption=randomNameLabel(numberRandom1);
+					nameSecondOption=randomNameLabel(numberRandom2);
+				}
+				else{
+					do{
+						numberRandom2 = randomIntGenerate6();
+					}while(numberRandom1 == numberRandom2);
+					nameFirstOption=randomNameLabel(numberRandom2);
+					nameSecondOption=randomNameLabel(numberRandom1);
+				}
+				
+				this.firstOption.setText(nameFirstOption);
+				this.secondOption.setText(nameSecondOption);
+				
+		        pack();
+
+				
+			}
+			else{
+				do{
+			    	numberRandom1 = randomIntGenerate6();
+			    	numberRandom2 = randomIntGenerate6();
+			    	
+			    }while(numberRandom1 == numberRandom2);
+				
+				this.testLabel.setText(this.randomNameLabel(numberRandom1));
+				this.testLabel.setForeground(this.randomColorLabel(numberRandom2));
+				
+				String nameFirstOption=" "; String nameSecondOption=" ";
+				if(randomIntGenerate2() == 0){
+					do{
+						numberRandom2 = randomIntGenerate6();
+					}while(numberRandom1 == numberRandom2);
+					nameFirstOption=randomNameLabel(numberRandom1);
+					nameSecondOption=randomNameLabel(numberRandom2);
+				}
+				else{
+					do{
+						numberRandom2 = randomIntGenerate6();
+					}while(numberRandom1 == numberRandom2);
+					nameFirstOption=randomNameLabel(numberRandom2);
+					nameSecondOption=randomNameLabel(numberRandom1);
+				}
+				
+				this.firstOption.setText(nameFirstOption);
+				this.secondOption.setText(nameSecondOption);
+				
+		        pack();
+
+			}
+	        
+	   }
+	}
 	@Override
 	public void keyReleased(KeyEvent e) {
 		// TODO Auto-generated method stub

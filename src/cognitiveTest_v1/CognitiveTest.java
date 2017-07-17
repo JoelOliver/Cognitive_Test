@@ -40,7 +40,7 @@ public class CognitiveTest extends JFrame implements KeyListener {
 	    }while(numberRandom1 == numberRandom2);
 		
 		testLabel=new JLabel(randomNameLabel(numberRandom1)); testLabel.setForeground(randomColorLabel(numberRandom2));
-		testLabel.setFont(new Font("Dialog", Font.PLAIN, 40));
+		testLabel.setFont(new Font("Dialog", Font.PLAIN, 50));
 		labelPanel.add(testLabel);
 		
 		optionsPanel=new JPanel();
@@ -85,7 +85,7 @@ public class CognitiveTest extends JFrame implements KeyListener {
 		hitsPanel.add(hitsLabel);
 		
 		generalPanel=new JPanel();
-		generalPanel.setLayout(new GridLayout(3,1,30,30));
+		generalPanel.setLayout(new GridLayout(3,1,50,50));
 		generalPanel.add(labelPanel);generalPanel.add(optionsPanel);generalPanel.add(hitsPanel);
 
 		this.getContentPane().add(generalPanel);

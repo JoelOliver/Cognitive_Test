@@ -14,21 +14,25 @@ import java.util.Random;
 import javax.swing.*;
 
 
-public class CognitiveTest extends JFrame implements ActionListener {
+public class CognitiveTest extends JFrame implements ActionListener,KeyListener {
 
 	private JLabel testLabel,hitsLabel;
 	private JButton firstOption,secondOption;
 	private JPanel labelPanel,optionsPanel,hitsPanel,generalPanel;
 	
+	// Numeros gerados para garantir a aleatoriedade do teste cognitivo
+    private int numberRandom1,numberRandom2;
+	
+    private int hits;
+	
 	public CognitiveTest(){
 		super("Teste de Cognição");
 		
+		hits=0;
+		
 		labelPanel=new JPanel();
 		labelPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-		
-		// Numeros gerados para garantir a aleatoriedade do teste cognitivo
-	    int numberRandom1,numberRandom2;
-	    
+
 	    do{
 	    	numberRandom1 = randomIntGenerate6();
 	    	numberRandom2 = randomIntGenerate6();
@@ -44,14 +48,28 @@ public class CognitiveTest extends JFrame implements ActionListener {
 		String nameFirstOption=" "; String nameSecondOption=" ";
 		if(randomIntGenerate2() == 0){
 			nameFirstOption=randomNameLabel(numberRandom1);
+			do{
+				numberRandom2 = randomIntGenerate6();
+			}while(numberRandom1 == numberRandom2);
 			nameSecondOption=randomNameLabel(numberRandom2);
 		}
 		else{
+			do{
+				numberRandom2 = randomIntGenerate6();
+			}while(numberRandom1 == numberRandom2);
 			nameFirstOption=randomNameLabel(numberRandom2);
 			nameSecondOption=randomNameLabel(numberRandom1);
 		}
-		firstOption = new JButton(nameFirstOption); firstOption.addActionListener(this);
-		secondOption = new JButton(nameSecondOption);secondOption.addActionListener(this);
+		firstOption = new JButton(nameFirstOption); firstOption.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                firstOptionActionPerformed(evt);
+            }
+        });
+		secondOption = new JButton(nameSecondOption);secondOption.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                secondOptionActionPerformed(evt);
+            }
+        });
 		optionsPanel.add(firstOption); optionsPanel.add(secondOption);
 		
 		hitsPanel=new JPanel();
@@ -100,7 +118,10 @@ public class CognitiveTest extends JFrame implements ActionListener {
 			name="AZUL";
 		if(numberName == 5)
 			name="PRETO";
-		
+		if(numberName == 6)
+			name="CINZA";
+		if(numberName == 7)
+			name="LARANJA";
 		 
 	return name;}
 	
@@ -121,12 +142,16 @@ public class CognitiveTest extends JFrame implements ActionListener {
 			color=Color.BLUE;
 		if(numberColor == 5)
 			color=Color.BLACK;
+		if(numberColor == 6)
+			color=Color.DARK_GRAY;
+		if(numberColor == 7)
+			color=Color.ORANGE;
 		
 		 
 	return color;}
 	
-	
-	@Override // Funcao para definir os eventos em cima dos botoes de opcoes 
+	// Funcao para definir os eventos em cima dos botoes de opcoes
+	@Override  
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
@@ -134,7 +159,164 @@ public class CognitiveTest extends JFrame implements ActionListener {
 		
 	}
 	
+	private void firstOptionActionPerformed(java.awt.event.ActionEvent evt){
+		
+		if(firstOption.getText() == testLabel.getText()){
+			hits+=1;
+			this.hitsLabel.setText("Acertos : "+hits);
+			do{
+		    	numberRandom1 = randomIntGenerate6();
+		    	numberRandom2 = randomIntGenerate6();
+		    	
+		    }while(numberRandom1 == numberRandom2);
+			
+			this.testLabel.setText(this.randomNameLabel(numberRandom1));
+			this.testLabel.setForeground(this.randomColorLabel(numberRandom2));
+			
+			String nameFirstOption=" "; String nameSecondOption=" ";
+			if(randomIntGenerate2() == 0){
+				do{
+					numberRandom2 = randomIntGenerate6();
+				}while(numberRandom1 == numberRandom2);
+				nameFirstOption=randomNameLabel(numberRandom1);
+				nameSecondOption=randomNameLabel(numberRandom2);
+			}
+			else{
+				do{
+					numberRandom2 = randomIntGenerate6();
+				}while(numberRandom1 == numberRandom2);
+				nameFirstOption=randomNameLabel(numberRandom2);
+				nameSecondOption=randomNameLabel(numberRandom1);
+			}
+			
+			this.firstOption.setText(nameFirstOption);
+			this.secondOption.setText(nameSecondOption);
+			
+	        pack();
+
+		}
+		else{
+			do{
+		    	numberRandom1 = randomIntGenerate6();
+		    	numberRandom2 = randomIntGenerate6();
+		    	
+		    }while(numberRandom1 == numberRandom2);
+			
+			this.testLabel.setText(this.randomNameLabel(numberRandom1));
+			this.testLabel.setForeground(this.randomColorLabel(numberRandom2));
+			
+			String nameFirstOption=" "; String nameSecondOption=" ";
+			if(randomIntGenerate2() == 0){
+				do{
+					numberRandom2 = randomIntGenerate6();
+				}while(numberRandom1 == numberRandom2);
+				nameFirstOption=randomNameLabel(numberRandom1);
+				nameSecondOption=randomNameLabel(numberRandom2);
+			}
+			else{
+				do{
+					numberRandom2 = randomIntGenerate6();
+				}while(numberRandom1 == numberRandom2);
+				nameFirstOption=randomNameLabel(numberRandom2);
+				nameSecondOption=randomNameLabel(numberRandom1);
+			}
+			
+			this.firstOption.setText(nameFirstOption);
+			this.secondOption.setText(nameSecondOption);
+			
+	        pack();
+
+		}
+	}
 	
+	private void secondOptionActionPerformed(java.awt.event.ActionEvent evt){
+		if(secondOption.getText() == testLabel.getText()){
+			hits+=1;
+			this.hitsLabel.setText("Acertos : "+hits);
+			do{
+		    	numberRandom1 = randomIntGenerate6();
+		    	numberRandom2 = randomIntGenerate6();
+		    	
+		    }while(numberRandom1 == numberRandom2);
+			
+			this.testLabel.setText(this.randomNameLabel(numberRandom1));
+			this.testLabel.setForeground(this.randomColorLabel(numberRandom2));
+			
+			String nameFirstOption=" "; String nameSecondOption=" ";
+			if(randomIntGenerate2() == 0){
+				do{
+					numberRandom2 = randomIntGenerate6();
+				}while(numberRandom1 == numberRandom2);
+				nameFirstOption=randomNameLabel(numberRandom1);
+				nameSecondOption=randomNameLabel(numberRandom2);
+			}
+			else{
+				do{
+					numberRandom2 = randomIntGenerate6();
+				}while(numberRandom1 == numberRandom2);
+				nameFirstOption=randomNameLabel(numberRandom2);
+				nameSecondOption=randomNameLabel(numberRandom1);
+			}
+			
+			this.firstOption.setText(nameFirstOption);
+			this.secondOption.setText(nameSecondOption);
+			
+	        pack();
+
+			
+		}
+		else{
+			do{
+		    	numberRandom1 = randomIntGenerate6();
+		    	numberRandom2 = randomIntGenerate6();
+		    	
+		    }while(numberRandom1 == numberRandom2);
+			
+			this.testLabel.setText(this.randomNameLabel(numberRandom1));
+			this.testLabel.setForeground(this.randomColorLabel(numberRandom2));
+			
+			String nameFirstOption=" "; String nameSecondOption=" ";
+			if(randomIntGenerate2() == 0){
+				do{
+					numberRandom2 = randomIntGenerate6();
+				}while(numberRandom1 == numberRandom2);
+				nameFirstOption=randomNameLabel(numberRandom1);
+				nameSecondOption=randomNameLabel(numberRandom2);
+			}
+			else{
+				do{
+					numberRandom2 = randomIntGenerate6();
+				}while(numberRandom1 == numberRandom2);
+				nameFirstOption=randomNameLabel(numberRandom2);
+				nameSecondOption=randomNameLabel(numberRandom1);
+			}
+			
+			this.firstOption.setText(nameFirstOption);
+			this.secondOption.setText(nameSecondOption);
+			
+	        pack();
+
+		}
+		
+	}
+	
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 	 
 	
@@ -143,6 +325,8 @@ public class CognitiveTest extends JFrame implements ActionListener {
 	   public static void main(String arg[]){
 		   CognitiveTest test=new CognitiveTest();
 	   }
+
+	
 
 }
 

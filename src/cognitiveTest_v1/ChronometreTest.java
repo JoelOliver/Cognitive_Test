@@ -10,7 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
   
     
-public class ChronometreTest  {
+public class ChronometreTest {
 	private long begin, end;
 	 
     public void start(){
@@ -41,6 +41,7 @@ public class ChronometreTest  {
         return (end - begin) / 3600000.0;
     }
  
+    
     public static void main(String[] arg) {
     	ChronometreTest ch = new ChronometreTest();
          
@@ -61,10 +62,6 @@ public class ChronometreTest  {
         
        
  
-       // ch.start();
-        //for (int i = 10000000;i>0;i--) {}
-        //ch.stop();
-        //System.out.println(ch.getTime());
     }
 }
 

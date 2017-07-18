@@ -5,10 +5,12 @@
 package cognitiveTest_v1;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.Random;
 
 import javax.swing.*;
@@ -16,19 +18,35 @@ import javax.swing.*;
 
 public class CognitiveTest extends JFrame implements KeyListener {
 
-	private JLabel testLabel,hitsLabel;
-	private JButton firstOption,secondOption;
-	private JPanel labelPanel,optionsPanel,hitsPanel,generalPanel;
+	private JLabel testLabel,leftIconSetLabel,rightIconSetLabel,chronometreLabel;
+	private JButton firstOption,secondOption,stopButton;
+	private JPanel labelPanel,optionsPanel,setsPanel,stopPanel,generalPanel,chronometrePanel;
 	
 	// Numeros gerados para garantir a aleatoriedade do teste cognitivo
     private int numberRandom1,numberRandom2;
 	
-    private int hits;
+    // Quantidade de acertos
+    private int hits,count;
+    private ArrayList<Integer> vectorHitsMistakes;
+    
+    // Variaveis de tempo
+    protected long startTime,stopTime,endTime;
+    protected ArrayList<Long> timeResponsesHits,timeResponsesMistakes;
 	
 	public CognitiveTest(){
 		super("Teste de Cognição");
 		
+		
+		
+		startTime = System.currentTimeMillis();
+		
+		timeResponsesHits = new ArrayList<Long>();
+		timeResponsesMistakes = new ArrayList<Long>();
+
+		vectorHitsMistakes = new ArrayList<Integer>();
+		
 		hits=0;
+		count=0;
 		
 		labelPanel=new JPanel();
 		labelPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -74,14 +92,33 @@ public class CognitiveTest extends JFrame implements KeyListener {
 		secondOption.addKeyListener(this);
 		optionsPanel.add(firstOption); optionsPanel.add(secondOption);
 		
-		hitsPanel=new JPanel();
-		hitsPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
-		hitsLabel=new JLabel("Acertos :    ");
-		hitsPanel.add(hitsLabel);
+		
+		setsPanel = new JPanel();
+		setsPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		ImageIcon rightSetIcon = new ImageIcon("rightSetIcon.png");
+		ImageIcon leftSetIcon = new ImageIcon("leftSetIcon.png");
+		rightIconSetLabel=new JLabel();
+		rightIconSetLabel.setIcon(rightSetIcon);
+		leftIconSetLabel=new JLabel();
+		leftIconSetLabel.setIcon(leftSetIcon);
+		setsPanel.add(this.leftIconSetLabel);setsPanel.add(new JPanel());setsPanel.add(new JPanel());setsPanel.add(rightIconSetLabel);
+		
+		
+		stopPanel = new JPanel ();
+		stopPanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+		stopButton = new JButton ("Parar o teste");
+		stopButton.setFont(new Font("Dialog", Font.BOLD, 15));
+		stopButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+            	stopButtonActionPerformed(evt);
+            }
+        });
+		stopPanel.add(this.stopButton);
+		
 		
 		generalPanel=new JPanel();
-		generalPanel.setLayout(new GridLayout(3,1,50,50));
-		generalPanel.add(labelPanel);generalPanel.add(optionsPanel);generalPanel.add(hitsPanel);
+		generalPanel.setLayout(new GridLayout(4,1,30,30));
+		generalPanel.add(labelPanel);generalPanel.add(optionsPanel);generalPanel.add(setsPanel);generalPanel.add(stopPanel);
 
 		this.getContentPane().add(generalPanel);
 		
@@ -89,7 +126,7 @@ public class CognitiveTest extends JFrame implements KeyListener {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         pack();
         setResizable(false);
-        this.setSize(450, 450);
+        this.setSize(400, 400);
 		
 	}
 	
@@ -146,7 +183,7 @@ public class CognitiveTest extends JFrame implements KeyListener {
 		if(numberColor == 5)
 			color=Color.BLACK;
 		if(numberColor == 6)
-			color=Color.DARK_GRAY;
+			color=Color.GRAY;
 		if(numberColor == 7)
 			color=Color.ORANGE;
 		
@@ -156,10 +193,14 @@ public class CognitiveTest extends JFrame implements KeyListener {
 	// Funcoes para definir os eventos em cima dos botoes de opcoes
 	
 	private void firstOptionActionPerformed(java.awt.event.ActionEvent evt){
-		
+       
+	  count+=1;	
 		if(firstOption.getText() == testLabel.getText()){
+			
 			hits+=1;
-			this.hitsLabel.setText("Acertos : "+hits);
+			this.vectorHitsMistakes.add(1);
+			this.registerTimeResponseHit(System.currentTimeMillis());
+			
 			do{
 		    	numberRandom1 = randomIntGenerate6();
 		    	numberRandom2 = randomIntGenerate6();
@@ -188,6 +229,11 @@ public class CognitiveTest extends JFrame implements KeyListener {
 
 		}
 		else{
+			
+			this.registerTimeResponseMistake(System.currentTimeMillis());
+			this.vectorHitsMistakes.add(0);
+
+			
 			do{
 		    	numberRandom1 = randomIntGenerate6();
 		    	numberRandom2 = randomIntGenerate6();
@@ -218,10 +264,17 @@ public class CognitiveTest extends JFrame implements KeyListener {
 	}
 	
 	private void secondOptionActionPerformed(java.awt.event.ActionEvent evt){
+	
+		count+=1;	
+
 		if(secondOption.getText() == testLabel.getText()){
+			
 			hits+=1;
-			this.hitsLabel.setText("Acertos : "+hits);
-			do{
+            this.registerTimeResponseHit(System.currentTimeMillis());
+			this.vectorHitsMistakes.add(1);
+
+			
+            do{
 		    	numberRandom1 = randomIntGenerate6();
 		    	numberRandom2 = randomIntGenerate6();
 		    	
@@ -250,6 +303,11 @@ public class CognitiveTest extends JFrame implements KeyListener {
 			
 		}
 		else{
+			
+			this.registerTimeResponseMistake(System.currentTimeMillis());
+			this.vectorHitsMistakes.add(0);
+
+			
 			do{
 		    	numberRandom1 = randomIntGenerate6();
 		    	numberRandom2 = randomIntGenerate6();
@@ -289,11 +347,21 @@ public class CognitiveTest extends JFrame implements KeyListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		// TODO Auto-generated method stub
+
+		count+=1;	
+
 		if(e.getKeyCode()==KeyEvent.VK_LEFT){
+			
+			
+			
 			if(firstOption.getText() == testLabel.getText()){
+				
 				hits+=1;
-				this.hitsLabel.setText("Acertos : "+hits);
-				do{
+                this.registerTimeResponseHit(System.currentTimeMillis());
+    			this.vectorHitsMistakes.add(1);
+
+				
+                do{
 			    	numberRandom1 = randomIntGenerate6();
 			    	numberRandom2 = randomIntGenerate6();
 			    	
@@ -321,6 +389,11 @@ public class CognitiveTest extends JFrame implements KeyListener {
 
 			}
 			else{
+				
+				this.registerTimeResponseMistake(System.currentTimeMillis());
+				this.vectorHitsMistakes.add(0);
+
+				
 				do{
 			    	numberRandom1 = randomIntGenerate6();
 			    	numberRandom2 = randomIntGenerate6();
@@ -352,8 +425,12 @@ public class CognitiveTest extends JFrame implements KeyListener {
 
 	    }else if(e.getKeyCode()==KeyEvent.VK_RIGHT){
 	    	if(secondOption.getText() == testLabel.getText()){
-				hits+=1;
-				this.hitsLabel.setText("Acertos : "+hits);
+				
+	    		hits+=1;
+                this.registerTimeResponseHit(System.currentTimeMillis());
+    			this.vectorHitsMistakes.add(1);
+
+	    		
 				do{
 			    	numberRandom1 = randomIntGenerate6();
 			    	numberRandom2 = randomIntGenerate6();
@@ -383,6 +460,11 @@ public class CognitiveTest extends JFrame implements KeyListener {
 				
 			}
 			else{
+				
+				this.registerTimeResponseMistake(System.currentTimeMillis());
+				this.vectorHitsMistakes.add(0);
+
+				
 				do{
 			    	numberRandom1 = randomIntGenerate6();
 			    	numberRandom2 = randomIntGenerate6();
@@ -420,8 +502,95 @@ public class CognitiveTest extends JFrame implements KeyListener {
 	}
 	
 	 
+    protected void registerTimeResponseHit(long time){
+    	if(count == 1){
+    		stopTime = time;
+    		long timeResponse = stopTime - startTime;
+		    timeResponsesHits.add(timeResponse);
+    	}
+    	else{
+    		long timeResponse = time - stopTime ;
+		    timeResponsesHits.add(timeResponse);
+		    stopTime = time;
+    	}
+    }
+    protected void registerTimeResponseMistake(long time){
+    	if(count == 1){
+    		stopTime = time;
+    		long timeResponse = stopTime - startTime;
+    		timeResponsesMistakes.add(timeResponse);
 
-	
+    	}
+    	else{
+    		long timeResponse = time - stopTime ;
+    		timeResponsesMistakes.add(timeResponse);
+    		stopTime = time;
+    	}
+    	
+    }
+    
+    private void stopButtonActionPerformed(java.awt.event.ActionEvent evt){
+    	
+    	JTextArea textArea = new JTextArea("Numero de respostas realizadas = "+ this.getCount()+"\n"
+    	                                    +"Tempo total de realização do teste = "+this.getTimeInAplication()+"\n\n"
+    			                            +"--------------------------------------------------------------"+"\n\n"+
+    			                            this.getGeneralAnalise()
+    			
+    		                           );
+		JScrollPane scrollPane = new JScrollPane(textArea);  
+		textArea.setLineWrap(true);  
+		textArea.setWrapStyleWord(true); 
+		scrollPane.setPreferredSize( new Dimension( 900, 600 ) );
+		JOptionPane.showMessageDialog(null, scrollPane, "------ Analise do Teste ------",  
+		                                       JOptionPane.DEFAULT_OPTION);
+		
+		this.setVisible(false);
+
+    	
+    }
+    
+    
+    protected int getCount(){
+    	
+    return count;}
+    
+    protected String getTimeInAplication(){
+    	long totalSeconds = (System.currentTimeMillis() - this.startTime)/1000;
+    	
+    	int seconds = (int) totalSeconds % 60; 
+    	int minutes = (int) (totalSeconds % 3600) / 60;    
+    	
+    return String.format("%02d minuto(s) e %02d segundo(s)", minutes, seconds); }
+    
+        
+    protected String getGeneralAnalise(){
+    	
+    	int temp1=0;
+    	int temp2=0;
+    	String generalAnalise = "                                   ~ Analise geral ~   \n \n";
+    	
+    	for(int i=0;i<this.vectorHitsMistakes.size();i++){
+    		if(vectorHitsMistakes.get(i) == 1){ 
+    			// acertos
+    			generalAnalise+="Resposta "+(i+1)+":\tACERTOU\t:"+this.timeResponsesHits.get(temp1)+" ms \n";
+    			temp1+=1;
+    		}
+    		else{ 
+    			//erros
+    			generalAnalise+="Resposta "+(i+1)+":\tERROU\t:"+this.timeResponsesMistakes.get(temp2)+" ms \n";
+    			temp2+=1;    		
+    			}
+    	  }
+    	
+    return generalAnalise;}
+    
+    //testing the class ...
+    public static void main(String[] arg) {
+    	
+        
+       CognitiveTest test = new CognitiveTest();
+       
+    }
 
 }
 

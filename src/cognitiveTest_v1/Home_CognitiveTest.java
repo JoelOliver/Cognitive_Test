@@ -28,6 +28,7 @@ public class Home_CognitiveTest extends JFrame {
     private void initComponents(){
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        
         jMenuBar1 = new JMenuBar();
         
         menuCognitiveTest = new JMenu();
@@ -64,7 +65,7 @@ public class Home_CognitiveTest extends JFrame {
         setResizable(false);
 
         pack();
-        this.setSize(637, 320);
+        this.setSize(637, 420);
 
 	
     }

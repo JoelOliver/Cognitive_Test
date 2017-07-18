@@ -587,13 +587,13 @@ public class CognitiveTest extends JFrame implements KeyListener {
     	
     return generalAnalise;}
     
-    //testing the class ...
+    /*testing the class ...
     public static void main(String[] arg) {
     	
         
        CognitiveTest test = new CognitiveTest();
        
-    }
+    }*/
 
 }
 

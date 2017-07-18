@@ -532,7 +532,10 @@ public class CognitiveTest extends JFrame implements KeyListener {
     private void stopButtonActionPerformed(java.awt.event.ActionEvent evt){
     	
     	JTextArea textArea = new JTextArea("Numero de respostas realizadas = "+ this.getCount()+"\n"
-    	                                    +"Tempo total de realização do teste = "+this.getTimeInAplication()+"\n\n"
+    	                                  +"Numero de acertos = "+this.hits+"\n"
+    	                                  +"Numero de erros = "  +(this.getCount() - this.hits)+"\n"
+    			                          +"Tempo total de realização do teste = "+this.getTimeInAplication()+"\n"
+    	                                    
     			                            +"--------------------------------------------------------------"+"\n\n"+
     			                            this.getGeneralAnalise()
     			
